@@ -78,7 +78,7 @@ Ces informations seront utilisées par les futures applications mobiles et des s
     - `symfony console import:mairies` 
 
 ## Postman
--Import api postman
+- Import api postman
     - `Prendre le fichier postman_api a la racine du projet`
 
 ## Liens utiles

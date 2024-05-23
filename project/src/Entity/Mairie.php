@@ -5,49 +5,108 @@ namespace App\Entity;
 use App\Repository\MairieRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter as OrmSearchFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter as OrmOrderFilter;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\Serializer\Attribute\Groups;
+
 #[ORM\Entity(repositoryClass: MairieRepository::class)]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: ["groups" => ["mairie:read:collection"]]
+        ),
+        new Get(
+            normalizationContext: ["groups" => ["mairie:read"]]
+        ),
+        new Post(
+            normalizationContext: ["groups" => ["mairie:read"]],
+            denormalizationContext: ["groups" => ["mairie:write"]],
+            security:"is_granted('ROLE_USER')"
+
+        ),
+        new Patch(
+            normalizationContext: ["groups" => ["mairie:read"]],
+            denormalizationContext: ["groups" => ["mairie:write"]],
+            security:"is_granted('ROLE_USER')"
+        ),
+        new Delete(
+            security:"is_granted('ROLE_USER')"
+        )
+    ]
+)]
+#[ApiFilter(OrmSearchFilter::class, properties: [
+    'departement.region' => 'exact',
+    'departement.nom' => 'partial',
+    'departement.numero' => 'exact',
+    'codePostal' => 'exact',
+    'ville' => 'partial'
+])]
+#[ApiFilter(OrmOrderFilter::class, properties: [
+    'label' => 'ASC',
+    'codePostal' => 'ASC'
+])]
 class Mairie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["mairie:read:collection", "mairie:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 6)]
+    #[Groups(["mairie:read:collection", "mairie:read", "mairie:write"])]
     private ?string $codeInsee = null;
 
     #[ORM\Column(length: 5)]
+    #[Groups(["mairie:read:collection", "mairie:read", "mairie:write"])]
     private ?string $codePostal = null;
 
     #[ORM\Column(length: 180)]
+    #[Groups(["mairie:read", "mairie:write"])]
     private ?string $label = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["mairie:read:collection","mairie:read", "mairie:write"])]
     private ?string $adresse = null;
 
     #[ORM\Column(length: 100)]
+    #[Groups([ "mairie:read", "mairie:write"])]
     private ?string $ville = null;
 
-    #[ORM\Column(length: 255,nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["mairie:read:collection","mairie:read", "mairie:write"])]
     private ?string $siteWeb = null;
 
-    #[ORM\Column(length: 25,nullable: true)]
+    #[ORM\Column(length: 25, nullable: true)]
+    #[Groups(["mairie:read:collection","mairie:read", "mairie:write"])]
     private ?string $telephone = null;
 
-    #[ORM\Column(length: 255,nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["mairie:read", "mairie:write"])]
     private ?string $email = null;
 
     #[ORM\Column(length: 20,nullable: true)]
+    #[Groups(["mairie:read:collection","mairie:read", "mairie:write"])]
     private ?string $latitude = null;
 
     #[ORM\Column(length: 20,nullable: true)]
+    #[Groups(["mairie:read:collection","mairie:read", "mairie:write"])]
     private ?string $longitude = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(["mairie:read", "mairie:write"])]
     private ?\DateTimeInterface $dateMaj = null;
 
-    #[ORM\ManyToOne(inversedBy: 'mairies')]
+    #[ORM\ManyToOne(inversedBy: 'mairies', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["mairie:read", "mairie:write"])]
     private ?Departement $departement = null;
 
     public function getId(): ?int

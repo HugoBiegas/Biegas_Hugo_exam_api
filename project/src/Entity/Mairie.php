@@ -57,7 +57,7 @@ class Mairie
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["mairie:read:collection", "mairie:read"])]
+    #[Groups([ "mairie:read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 6)]

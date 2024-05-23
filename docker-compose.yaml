@@ -18,7 +18,7 @@ services:
     restart: always
     volumes:
       - ./var/db-data:/var/lib/mysql
-      #- ./utils/sql:/docker-entrypoint-initdb.d
+      - ./utils/mariadb/my.cnf:/etc/mysql/conf.d/my.cnf 
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: app_db

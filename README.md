@@ -38,7 +38,7 @@ Ces informations seront utilisées par les futures applications mobiles et des s
     classDiagram
         direction LR
         Mairie -- Departement
-        User : string nom
+        User : string pasword
         User : string email
         User : json Role 
         Departement : int id

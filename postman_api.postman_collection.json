@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "e8e3477d-ab0a-4487-8571-ba8562787cc5",
+		"name": "Mairie_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30798134"
+	},
+	"item": [
+		{
+			"name": "mairie",
+			"item": [
+				{
+					"name": "Collection maire",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/mairies",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"mairies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Créer mairie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"codeInsee\": \"12345\",\r\n  \"codePostal\": \"75001\",\r\n  \"label\": \"Bureau Principal\",\r\n  \"adresse\": \"10 Rue de Rivoli\",\r\n  \"ville\": \"Paris\",\r\n  \"siteWeb\": \"http://www.bureauprincipal.fr\",\r\n  \"telephone\": \"0123456789\",\r\n  \"email\": \"contact@bureauprincipal.fr\",\r\n  \"latitude\": 48.8566,\r\n  \"longitude\": 2.3522,\r\n  \"dateMaj\": \"2024-05-23T08:08:33.113Z\",\r\n  \"departement\": {\r\n    \"numero\": \"75\",\r\n    \"label\": \"Paris\",\r\n    \"region\": \"Île-de-France\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/mairies",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"mairies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete mairie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/mairies/2501",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"mairies",
+								"2501"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detaille mairie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/mairies/2500",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"mairies",
+								"2500"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update mairie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/merge-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"codeInsee\": \"25795\",\r\n  \"codePostal\": \"96844\",\r\n  \"label\": \"bonjour\",\r\n  \"adresse\": \"17 rue palouzié\",\r\n  \"ville\": \"France\",\r\n  \"siteWeb\": \"http://ww.fr\",\r\n  \"telephone\": \"0125589854\",\r\n  \"email\": \"co@bureauprincipal.fr\",\r\n  \"latitude\": 40.8566,\r\n  \"longitude\": 20.3522,\r\n  \"dateMaj\": \"2034-05-23T08:08:33.113Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/mairies/2501",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"mairies",
+								"2501"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "departement",
+			"item": [
+				{
+					"name": "Collection departement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/departements",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"departements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detaille departement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/departements/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"departements",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "Taxe-fonciere",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"surfaceHabitable\": 20,\r\n  \"prixM2\": 9917\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_service_url}}/taxe-fonciere",
+							"host": [
+								"{{api_service_url}}"
+							],
+							"path": [
+								"taxe-fonciere"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Taxe-ordures-menageres",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"valeurLocativeCadastrale\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_service_url}}/taxe-ordures-menageres",
+							"host": [
+								"{{api_service_url}}"
+							],
+							"path": [
+								"taxe-ordures-menageres"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"console.log(\"Authentication successfull ! \");\r",
+							"pm.collectionVariables.set(\"token\",pm.response.json().token);\r",
+							"console.log(\"Token env variable set !\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"jp@mail.dev\",\r\n  \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/authenticate",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"authenticate"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "jp@gmail.dev",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_service_url",
+			"value": "http://localhost:8000/api/calculate",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "api_url",
+			"value": "http://localhost:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}

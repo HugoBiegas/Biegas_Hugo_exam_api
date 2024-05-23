@@ -64,15 +64,22 @@ Ces informations seront utilisées par les futures applications mobiles et des s
     - `docker exec -it api /bin/bash`
 - Installation des dépendances
     - `composer install`
+- Créer une migration 
+    - `symfony console make:migration`
 - Migration de la base de données
     - `symfony console d:m:m`
 
 ## Commandes d'imports des datas
-
+- Import utilisateur
+    - `symfony console d:f:l`
 - Import et départements
     - `symfony console import:departements`
 - Import des mairies
     - `symfony console import:mairies` 
+
+## Postman
+-Import api postman
+    - `Prendre le fichier postman_api a la racine du projet`
 
 ## Liens utiles
 - [Documentation Symfony](https://symfony.com/doc/current/index.html)

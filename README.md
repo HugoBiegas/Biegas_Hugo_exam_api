@@ -38,6 +38,9 @@ Ces informations seront utilisées par les futures applications mobiles et des s
     classDiagram
         direction LR
         Mairie -- Departement
+        User : string nom
+        User : string email
+        User : json Role 
         Departement : int id
         Departement : string numero
         Departement : string label
@@ -53,9 +56,6 @@ Ces informations seront utilisées par les futures applications mobiles et des s
         Mairie : string latitude
         Mairie : string longitude
         Mairie : string dateMaj
-        User : string nom
-        User : string email
-        User : json Role 
 ```
 
 ## Installation et démarrage de l'application
